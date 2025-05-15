@@ -54,7 +54,7 @@ jobs:
           sed -i "s/^appVersion: .*/appVersion: ${{ inputs.APP_VERSION }}/" charts/${{ inputs.CHART_NAME }}/Chart.yaml
           sed -i "s/^version: .*/version: $NEXT_VERSION/" charts/${{ inputs.CHART_NAME }}/Chart.yaml
 
-          # docker run --rm --volume "$(pwd)/charts/${{ inputs.CHART_NAME }}:/helm-docs" -u $(id -u) jnorwood/helm-docs:latest
+          docker run --rm --volume "$(pwd)/charts/${{ inputs.CHART_NAME }}:/helm-docs" -u $(id -u) jnorwood/helm-docs:latest
 
           echo "BRANCH_PR=${{ inputs.CHART_NAME }}-$NEXT_VERSION" >> $GITHUB_OUTPUT
 
